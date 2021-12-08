@@ -19,200 +19,96 @@ info: |
 # persist drawings in exports and build
 drawings:
   persist: false
+
 ---
 
-# Laravel9へ！
+# 米沢興譲館
 
 <div>
-  <h1>Laravel9がリリースされます!2021/01予定ですが、振り返りをしてみましょう。</h1>
+  <h1></h1>
 </div>
-
----
-
-# Laravel9での把握すべきこと
 
 ---
 
 ## 概要
 
-1. PHP 8.0 が最低限必要
-2. Symfony6系を利用している
-3. 次のLTSとなる
-
-|   version    | release date              |
-| :----------: | :------------------------ |
-| Laravel 9.0  | 2022年1月（January 2022） |
-| Laravel 10.0 | 2023年1月（January 2023） |
-| Laravel 11.0 | 2024年1月（January 2024） |
+1. 大学でやっていたこと
+2. 社会人のこと
+3. お金まわり
+4. ソフトウェアエンジニアの仕事
+5. 大学生のインターンって何をやるの？
+6. 大学生のうちにやっておくべきことって何？
 
 ---
 
-### 機能
-
-|                                               |                                                                                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| <kbd>Anonymous Migration</kbd>                | Migration自体にそれぞれ名前をつける必要ない                                                                                     |
-| <kbd>New Query Builder Interface</kbd>        | 「Query\Builder」「Eloquent\Builder」「Eloquent\Relation」の勘違いを減らす                                                      |
-| <kbd>PHP 8 String Functions</kbd>             | \Illuminate\Support\Strクラスの内部でのstr_contains() 、 str_starts_with() 、およびstr_ends_with()のphpの標準関数の利用が始まる |
-| <kbd>From SwiftMailer to Symfony Mailer</kbd> | SymfonyがSwiftMailerを非推奨になったため、その解消                                                                              |
+# 大学でやっていたこと
 
 ---
 
-# Anonymous Migration
+## 大学でやっていたこと
+
+1. 長期インターン
+2. 授業
+3. 研究
+4. 部活
 
 ---
 
-そもそもMigration自体にそれぞれ名前をつける必要があるんだっけ？という疑問から生まれた機能。
-
-[該当Issueはこちら](https://github.com/laravel/framework/issues/5899)で参考の書き方は次のとおり。
-
-```php
-<?php
-
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-return new class extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('people', function (Blueprint $table)
-        {
-            $table->string('first_name')->nullable();
-        });
-    }
-};
-```
+# 社会人のこと
 
 ---
 
-### Before
+## 社会人のこと
 
-```php
-<?php
-
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-class DropColumnTargetColumn extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('people', function (Blueprint $table) {
-            $table->string('first_name')->nullable();
-        });
-    }
-};
-```
+1. 仕事はどうしている？
+2. 休みは何してる？
+3. コロナで仕事の仕方は変わった？
 
 ---
 
-### After
-
-```php
-<?php
-
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-return new class extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('people', function (Blueprint $table)
-        {
-            $table->string('first_name')->nullable();
-        });
-    }
-};
-```
+# お金まわり
 
 ---
 
-# New Query Builder Interface
+## お金まわり
+
+1. ぶっちゃけ給料はいいの？
+2. 都会で暮らしていくのはどう？
+3. お金を稼ぐために意識してることは？
 
 ---
 
-クエリビルダインターフェースが提供されるようになる。これにより補完周りがかなり便利に。
-[こちら](https://github.com/laravel/framework/pull/37956) のプルリクエストにもあるように、補完が効いているときに、「Query\Builder」なのか「Eloquent\Builder」なのか「Eloquent\Relation」なのかによって補完が間違っているせいで一度エラーが出たなんて経験がある程度補完を使ったことがある人なら誰しもあるはず。そのエラーが出なくなるらしい。
+# ソフトウェアエンジニアの仕事
 
+---
+## ソフトウェアエンジニアの仕事
 
-```php
-<?php
-
-return Model::query()
-	->whereNotExists(function($query) {
-		// $query is a Query\Builder
-	})
-	->whereHas('relation', function($query) {
-		// $query is an Eloquent\Builder
-	})
-	->with('relation', function($query) {
-		// $query is an Eloquent\Relation
-	});
-```
+1. 何をしてるかみてみたい
+2. プログラミングって何・・・？
+3. サービスを作るって楽しい？
 
 ---
 
-# PHP 8 String Functions
+# 大学生のインターンって何をやるの？
 
 ---
 
-\Illuminate\Support\Strクラスの内部での
+### 大学生のインターンって何をやるの？
 
-* str_contains()
-* str_starts_with()
-* str_ends_with()
-
-のphpの標準関数の利用が始まる。今までphpの標準関数に文字列の中に特定nの文字が含まれるのかなどといった関数がなかったため、Laravelでは、独自のラッパーメソッドを実装していた。今回でその独自実装でなくなり、標準関数の利用が始まる
-
-プルリクエストは [こちら](https://github.com/laravel/framework/pull/38011)
-
-```
-Since PHP 8 will be the minimum, Tom Schlick submitted a PR to move to using str_contains(), str_starts_with() and str_ends_with() functions internally in the \Illuminate\Support\Str class.
-```
+これについては分けるほどでもないかもしれない。
 
 ---
 
-# From SwiftMailer to Symfony Mailer
+# 大学生のうちにやっておくべきことって何？
 
 ---
 
+## 大学生のうちにやっておくべきことって何？
 
-プルリクエストは[こちら](https://github.com/laravel/framework/pull/38481)
-
-SymfonyがSwiftMailerを非推奨としたため、Laravel9で、すべてのメールトランスポートにSymfonyMailerを使用するように変更された
-
-```
-Symfony deprecated SwiftMailer and Laravel 9 makes the change to use Symfony Mailer for all the mail transports. This does open up a few breaking changes and you can review the PR for all the details. The Laravel 9 upgrade guide will include instructions once it's officially released.
-```
-
----
-
-# アップデートの鬼門
-
----
-
-LTSにおけるアップデート(6.x -> 9.x)について
-Laravel8での変更が鬼門となりそう
-モデルファクトリが8からクラスベースの書き方に変更があった。
-しばらくは一旦ヘルパーで捌けるとはいえ、長期的なことを考えると、書き換えておいた方が良さそう
-
----
+1. 試すこと
+2. 得意なことを見つけること
+3. 苦手なことを見つけること
+4. お金を稼いでみること
 
 ---
 
