@@ -4,6 +4,7 @@ theme: unicorn
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
+colorSchema: 'light'
 # apply any windi css classes to the current slide
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
@@ -20,27 +21,40 @@ info: |
 drawings:
   persist: false
 
+layout: intro
+logoHeader: './images/techtrain.jpg'
+website: 'https://github.com/SuguruOoki'
+handle: 'suguru_ohki'
+introImage: 'https://avatars.githubusercontent.com/u/16362021?v=4'
+
 ---
 
 # 米沢興譲館
 
 <div>
-  <h1></h1>
+  <h2>今日はよろしくお願いします。</h2>
 </div>
 
----
-
-## 概要
-
-1. 大学でやっていたこと
-2. 社会人のこと
-3. お金まわり
-4. ソフトウェアエンジニアの仕事
-5. 大学生のインターンって何をやるの？
-6. 大学生のうちにやっておくべきことって何？
 
 ---
+layout: table-contents
+logoHeader: './images/techtrain.jpg'
+website: 'https://github.com/SuguruOoki'
+handle: 'suguru_ohki'
+gradientColors: ['#A21CAF', '#5B21B6']
 
+# 本日話すこと
+
+質問の多い少ないで、話す順などは変えます。
+
+- 📝 **大学でやっていたこと**
+- 🎨 **社会人のこと**
+- 🤹 **お金まわり**
+- 🧑‍💻 **ソフトウェアエンジニアの仕事**
+- 🎥 **大学生のインターンって何をやるの？**
+- 📤 **大学生のうちにやっておくべきことって何？**
+
+---
 # 大学でやっていたこと
 
 ---
