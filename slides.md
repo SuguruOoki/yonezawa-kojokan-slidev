@@ -42,6 +42,7 @@ logoHeader: './images/techtrain.jpg'
 website: 'https://github.com/SuguruOoki'
 handle: 'suguru_ohki'
 gradientColors: ['#A21CAF', '#5B21B6']
+--
 
 # 本日話すこと
 
@@ -55,6 +56,13 @@ gradientColors: ['#A21CAF', '#5B21B6']
 - 📤 **大学生のうちにやっておくべきことって何？**
 
 ---
+layout: intro
+logoHeader: './images/techtrain.jpg'
+website: 'https://github.com/SuguruOoki'
+handle: 'suguru_ohki'
+gradientColors: ['#A21CAF', '#5B21B6']
+--
+
 # 大学でやっていたこと
 
 ---
